@@ -44,7 +44,7 @@ export const mockYear = [
   { value: 2022, text: "2022" },
 ];
 
-const Search = () => {
+const Search = ({ clearPage }) => {
   const [filterSelect, setFilterSelect] = useState(0);
   const [year, setYear] = useState(null);
   const [moviesSearch, setMoviesSearch] = useState("");
@@ -198,6 +198,7 @@ const Search = () => {
                 variant="contained"
                 onClick={() => {
                   handleSubmit();
+                  clearPage();
                 }}
               >
                 Ara

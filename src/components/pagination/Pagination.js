@@ -8,7 +8,9 @@ import {
 import ReactPaginate from "react-paginate";
 import { useDispatch, useSelector } from "react-redux";
 
-const Pagination = () => {
+const Pagination = ({ pageNumber, setPageNumber }) => {
+  // const [pageNumber, setPageNumber] = useState(0);
+
   const { movies, name, type, paginationStarted, isSearch } = useSelector(
     (state) => state.movieList
   );
@@ -34,13 +36,25 @@ const Pagination = () => {
 
   return (
     <>
+      {/* <button
+        onClick={() => {
+          setPageNumber(0);
+        }}
+      >
+        test
+      </button> */}
       <div className="d-flex col-12 table-responsive px-4 ">
         <ReactPaginate
           ref={pagination}
           pageCount={Math.ceil(movies.totalResults / 10)}
+          forcePage={pageNumber}
           pageRangeDisplayed={4}
           marginPagesDisplayed={1}
-          onPageChange={(selected) => setPage(selected)}
+          onPageChange={(selected) => {
+            setPageNumber(selected.selected);
+            console.log(selected);
+            setPage(selected);
+          }}
           containerClassName="pagination"
           activeClassName="active"
           pageLinkClassName="page-link"

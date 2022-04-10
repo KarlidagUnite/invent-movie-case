@@ -8,7 +8,7 @@ import { fetchMovies } from "../../features/movies/movieListSlice";
 import Pagination from "../pagination/Pagination";
 import { Link } from "react-router-dom";
 
-const Table = () => {
+const Table = ({ pageNumber, setPageNumber }) => {
   const { movies, loading, filterValue } = useSelector(
     (state) => state.movieList
   );
@@ -71,7 +71,7 @@ const Table = () => {
           </div>
         ) : null}
         <div className="d-flex position-absolute bottom-0">
-          <Pagination />
+          <Pagination pageNumber={pageNumber} setPageNumber={setPageNumber} />
         </div>
       </div>
     </>
